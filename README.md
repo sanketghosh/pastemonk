@@ -31,10 +31,11 @@ git clone https://github.com/sanketghosh/pastemonk.git
 **Project Structure**
 
 - /api: Node.js and Express.js backend code
-- /frontend: Preact frontend code
-- /config: Configuration files
-- /public: Public assets
-- /views: HTML views
+  - /routes - all the routes goes here
+  - /models - models for database
+  - /controllers - all business logics
+  - /config - the configuration files (db and all)
+- /client: Preact frontend code
 
 ## Contributing
 
