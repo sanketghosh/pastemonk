@@ -18,7 +18,7 @@ require("dotenv/config");
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const conn = yield mongoose_1.default.connect(process.env.MONGO_URI);
-        console.log(`SUCCESS: MongoDB connected ${conn.connection.host}`);
+        console.log(`SUCCESS: MongoDB connected to ${conn.connection.host}`);
     }
     catch (error) {
         console.log(`ERROR: ${error.message}`);

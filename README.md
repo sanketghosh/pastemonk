@@ -13,7 +13,7 @@ Pastemonk is a dynamic and efficient pastebin clone designed to streamline the s
 - **MongoDB**: NoSQL database
 - **Node.js**: Server-side JavaScript runtime
 - **Express.js**: Web application framework for Node.js
-- **Preact**: Fast 3kB alternative to React
+- **React**: For building UIs
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ git clone https://github.com/sanketghosh/pastemonk.git
   - /models - models for database
   - /controllers - all business logics
   - /config - the configuration files (db and all)
-- /client: Preact frontend code
+- /client: React frontend code
 
 ## Contributing
 
