@@ -11,7 +11,6 @@ Pastemonk is a dynamic and efficient pastebin clone designed to streamline the s
 ## Tech stack
 
 - **MongoDB**: NoSQL database
-- **Node.js**: Server-side JavaScript runtime
 - **Express.js**: Web application framework for Node.js
 - **React**: For building UIs
 
