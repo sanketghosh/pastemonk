@@ -1,10 +1,10 @@
 import express from "express";
 import {
   defaultRouteHandler,
-  getNoteHandler,
-  makeDuplicateNoteHandler,
-  newNoteHandler,
-  saveNoteHandler,
+  getDocumentHandler,
+  makeDuplicateDocumentHandler,
+  newDocumentHandler,
+  saveDocumentHandler,
 } from "../controllers/app.controllers";
 
 const router = express.Router();
@@ -17,21 +17,21 @@ router.get("/", defaultRouteHandler);
 /**
  * @route GET /api/v1/new
  */
-router.get("/new", newNoteHandler);
+router.get("/new", newDocumentHandler);
 
 /**
  * @route GET /api/v1/:id
  */
-router.get("/:id", getNoteHandler);
+router.get("/:id", getDocumentHandler);
 
 /**
  * @route GET /api/v1/:id/duplicate
  */
-router.get("/:id/duplicate", makeDuplicateNoteHandler);
+router.get("/:id/duplicate", makeDuplicateDocumentHandler);
 
 /**
  * @route POST /api/v1/save
  */
-router.post("/save", saveNoteHandler);
+router.post("/save", saveDocumentHandler);
 
 export default router;

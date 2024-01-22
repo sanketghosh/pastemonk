@@ -13,17 +13,17 @@ router.get("/", app_controllers_1.defaultRouteHandler);
 /**
  * @route GET /api/v1/new
  */
-router.get("/new", app_controllers_1.newNoteHandler);
+router.get("/new", app_controllers_1.newDocumentHandler);
 /**
  * @route GET /api/v1/:id
  */
-router.get("/:id", app_controllers_1.getNoteHandler);
+router.get("/:id", app_controllers_1.getDocumentHandler);
 /**
  * @route GET /api/v1/:id/duplicate
  */
-router.get("/:id/duplicate", app_controllers_1.makeDuplicateNoteHandler);
+router.get("/:id/duplicate", app_controllers_1.makeDuplicateDocumentHandler);
 /**
  * @route POST /api/v1/save
  */
-router.post("/save", app_controllers_1.saveNoteHandler);
+router.post("/save", app_controllers_1.saveDocumentHandler);
 exports.default = router;

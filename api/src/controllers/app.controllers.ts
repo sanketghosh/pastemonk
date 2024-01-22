@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import Document from "../models/app.models";
 
 /**
  * @route GET /api/v1
@@ -19,43 +20,84 @@ export const defaultRouteHandler = async (req: Request, res: Response) => {
 
 /**
  * @route GET /api/v1/new
- * @description This function will help to create a new note/text
+ * @description This function will help to create a new document
  * @access PUBLIC
  */
-export const newNoteHandler = async (req: Request, res: Response) => {
+export const newDocumentHandler = async (req: Request, res: Response) => {
   try {
-  } catch (error) {}
+    res.status(200).json({ message: "new doc" });
+  } catch (error) {
+    res.status(500).json({ message: "ERROR! Something went wrong." });
+  }
 };
 
 /**
  * @route GET /api/v1/:id
- * @description This function will help to get any text/note
+ * @description This function will help to get any document
  * @access PUBLIC
  */
 
-export const getNoteHandler = async (req: Request, res: Response) => {
+export const getDocumentHandler = async (req: Request, res: Response) => {
+  const { id } = req.params; // Use req.params to get the URL parameters
   try {
-  } catch (error) {}
+    const document = await Document.findById(id);
+    if (!document) {
+      return res.status(404).json({ message: "Document not found." });
+    }
+    res.status(200).json({ document });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "ERROR! Something went wrong." });
+  }
 };
 
 /**
  * @route GET /api/v1/:id/duplicate
- * @description This function will help to create a duplicate note
+ * @description This function will help to create a duplicate document
  * @access PUBLIC
  */
 
-export const makeDuplicateNoteHandler = async (req: Request, res: Response) => {
+export const makeDuplicateDocumentHandler = async (
+  req: Request,
+  res: Response
+) => {
+  const { id } = req.params; // Retrieve the document ID from the URL parameters
+
   try {
-  } catch (error) {}
+    const originalDocument = await Document.findById(id);
+
+    if (!originalDocument) {
+      return res.status(404).json({ message: "Original document not found." });
+    }
+
+    const duplicatedDocument = new Document({
+      doc: originalDocument.doc,
+    });
+
+    await duplicatedDocument.save();
+
+    res.status(200).json({ duplicatedDocument });
+  } catch (error) {
+    res.status(500).json({ message: "ERROR! Something went wrong." });
+  }
 };
 
 /**
  * @route POST /api/v1/save
- * @description This function will help to create/save a note/text
+ * @description This function will help to create/save a document
  * @access PUBLIC
  */
 
-export const saveNoteHandler = async (req: Request, res: Response) => {
+export const saveDocumentHandler = async (req: Request, res: Response) => {
+  const { doc } = req.body;
   try {
-  } catch (error) {}
+    let document = new Document({
+      doc: doc,
+    });
+    await document.save();
+    // console.log(document);
+    res.status(200).json({ document });
+  } catch (error) {
+    res.status(500).json({ message: "ERROR! Something went wrong." });
+  }
 };
